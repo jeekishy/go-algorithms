@@ -17,7 +17,7 @@ import (
 
 func main() {
 	a1 := []int{2, 3, 4, 5, 7, 8, 4, 6, 1}
-	a1Result, err := findFirstRecurringNumber(a1)
+	a1Result, err := findFirstRecurringNumber(a1) // O(n)
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {
@@ -25,7 +25,7 @@ func main() {
 	}
 
 	a2 := []int{1, 3, 4, 5, 1, 8, 4, 6, 1}
-	a2Result, err := findFirstRecurringNumber(a2)
+	a2Result, err := findFirstRecurringNumber(a2) // O(n)
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	a3 := []int{1, 3, 4, 5, 8}
-	a3Result, err := findFirstRecurringNumber(a3)
+	a3Result, err := findFirstRecurringNumber(a3) // O(n)
 	if err != nil {
 		fmt.Println(err.Error())
 	} else {
@@ -47,9 +47,9 @@ func main() {
 func findFirstRecurringNumber(a []int) (int, error) {
 	loopedResult := map[int]struct{}{} // low memory footprint can also use bitset here instead of struct use bool
 
-	for _, value := range a {
+	for _, value := range a { // loop is O(n)
 		// check value is already in hashmap
-		if _, ok := loopedResult[value]; ok {
+		if _, ok := loopedResult[value]; ok { // hashMap lookup is O(1)
 			return value, nil
 		}
 
