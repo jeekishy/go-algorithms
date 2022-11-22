@@ -22,27 +22,29 @@ func main() {
 // use recursion - uses stacks
 // prone to stack overflow if number is big
 func getFactorialRecursive(number int) int {
-	// check zero // 0 1
-	if number < 2 {
-		return 1
-	}
-
-	return number * getFactorialRecursive(number-1)
-}
-
-func getFactorialIterative(number int) int {
-	// check zero // 0 1
+	// base case - stops the recursion
 	if number < 2 {
 		return 1
 	}
 
 	n := number
+
+	// recursive case - n * (n - 1)
+	n = n * getFactorialRecursive(n-1)
+
+	return n
+}
+
+func getFactorialIterative(number int) int {
+	// keep track of result
+	result := number
 	lastNumber := number
 
+	// n * (n-1) * .....
 	for i := 1; i < number; i++ {
-		n = n * (lastNumber - 1)
+		result = result * (lastNumber - 1)
 		lastNumber--
 	}
 
-	return n
+	return result
 }
