@@ -31,6 +31,7 @@ func main() {
 	fmt.Println(fibonacciIterative(9))
 }
 
+// O(2^N) - exponential time - very bad way of doing it
 // return fibonacci number at provided index
 // e.g. when index is 4  should return 3 -- 0, 1, 1, 2, 3, 5, 8
 // e.g. when index is 2  should return 1 -- 0, 1, 1, 2, 3, 5, 8
@@ -45,6 +46,7 @@ func fibonacciRecursive(index int) int {
 	return fibonacciRecursive(index-1) + fibonacciRecursive(index-2)
 }
 
+// o(n)
 // use a loop to generate fibonacci number
 // e.g. 0+1=1 => 1+1=2 => 1+2=3 => 2+3=5
 // pattern is second number + last fibonacci = next fibonacci
