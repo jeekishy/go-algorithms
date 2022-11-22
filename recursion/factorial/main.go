@@ -19,7 +19,7 @@ func main() {
 	fmt.Println(getFactorialIterative(8))
 }
 
-// use recursion - uses stacks
+// use recursion - uses stacks - 0(n)
 // prone to stack overflow if number is big
 func getFactorialRecursive(number int) int {
 	// base case - stops the recursion
@@ -35,7 +35,13 @@ func getFactorialRecursive(number int) int {
 	return n
 }
 
+// time complexity - 0(n)
 func getFactorialIterative(number int) int {
+	// base case
+	if number < 2 {
+		return 1
+	}
+
 	// keep track of result
 	result := number
 	lastNumber := number
