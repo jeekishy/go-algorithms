@@ -9,27 +9,28 @@ import "fmt"
 // n = n * n-1 ... = n\
 func main() {
 	// using recursion
-	fmt.Println(getFactorial(4))
-	fmt.Println(getFactorial(5))
-	fmt.Println(getFactorial(8))
+	fmt.Println(getFactorialRecursive(4))
+	fmt.Println(getFactorialRecursive(5))
+	fmt.Println(getFactorialRecursive(8))
 
 	// using a loop
-	fmt.Println(getFactorialLoop(4))
-	fmt.Println(getFactorialLoop(5))
-	fmt.Println(getFactorialLoop(8))
+	fmt.Println(getFactorialIterative(4))
+	fmt.Println(getFactorialIterative(5))
+	fmt.Println(getFactorialIterative(8))
 }
 
 // use recursion - uses stacks
-func getFactorial(number int) int {
+// prone to stack overflow if number is big
+func getFactorialRecursive(number int) int {
 	// check zero // 0 1
 	if number < 2 {
 		return 1
 	}
 
-	return number * getFactorial(number-1)
+	return number * getFactorialRecursive(number-1)
 }
 
-func getFactorialLoop(number int) int {
+func getFactorialIterative(number int) int {
 	// check zero // 0 1
 	if number < 2 {
 		return 1
@@ -39,9 +40,6 @@ func getFactorialLoop(number int) int {
 	lastNumber := number
 
 	for i := 1; i < number; i++ {
-		// 4 * (4 - 1) - 4 x 3
-		// 12 * (3 -1 ) - 12 x 2
-		// 24 * (2-1) - 24 * 1
 		n = n * (lastNumber - 1)
 		lastNumber--
 	}
