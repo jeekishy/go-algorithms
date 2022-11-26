@@ -8,14 +8,16 @@ import "fmt"
 // O(n^2) - time complexity
 // 0(1) - space complexity
 func main() {
-	toSort := []int{6, 5, 3, 1, 8, 7, 2, 4}
+	toSort := []int{6, 5, 3, 1, 8, 7, 2, 4, 0}
 	fmt.Println(toSort)
 	fmt.Println(bubbleSort(toSort))
 }
 
-// [6, 5, 3, 1, 8, 7, 2, 4]
-//  0, 1, 2, 3, 4, 5, 6, 7
-// expected result [1, 2, 3, 4, 5, 6, 7, 8]
+// [6, 5, 3, 1, 8, 7, 2, 4, 0]
+//
+//	0, 1, 2, 3, 4, 5, 6, 7
+//
+// expected result [0, 1, 2, 3, 4, 5, 6, 7, 8]
 func bubbleSort(toSort []int) []int {
 	arrayLength := len(toSort)
 
@@ -31,7 +33,6 @@ func bubbleSort(toSort []int) []int {
 			if n > rightElement {
 				toSort[j] = rightElement
 				toSort[j+1] = n
-				continue
 			}
 		}
 	}
