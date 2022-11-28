@@ -5,6 +5,9 @@ import "fmt"
 // insertion sort
 // sorts each element in an array while traversing the array/list
 // it compare with already sorted values and insert new value where required
+// insertion sort is very fast with partially sorted result with small set of data
+// 0(n) - for small and nearly sorted list | O(n^2) - for big data set or/and unsorted data set
+// this is my attempt at creating insertion sort algorithm, I think this can be optimise better
 func main() {
 	toSort := []int{6, 5, 3, 1, 8, 7, 2, 4, 0}
 	fmt.Println(toSort)
