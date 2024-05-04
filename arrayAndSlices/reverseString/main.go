@@ -9,37 +9,74 @@ import (
 func main() {
 	myString := "Hello World!"
 
-	newString, err := reverse(myString)
+	// looping through all letters - 0(n)
+	newString1, err := reverse(myString)
 	if err != nil {
 		fmt.Printf("%s", err.Error())
 	}
+	fmt.Println(newString1)
 
-	fmt.Println(newString)
+	// using tow pointer method - 0(n/2)
+	newString2, err := reverseUsingTwoPointers(myString)
+	if err != nil {
+		fmt.Printf("%s", err.Error())
+	}
+	fmt.Println(newString2)
 }
 
 // reverse taking in a string and reverses the order of the string and returns it
 // O(n) - "n" being the string input depending on the length of the string
-func reverse(s string) (string, error) {
+func reverse(myString string) (string, error) {
 	// validate empty string(s)
-	if len(strings.ReplaceAll(s, " ", "")) < 2 {
+	if len(strings.ReplaceAll(myString, " ", "")) < 2 {
 		return "", errors.New("string is empty")
 	}
 
-	var sliceOfString []string
-	myString := ""
-
 	// turn string into a slice
-	sliceOfString = strings.Split(s, "")
+	s := strings.Split(myString, "")
+	reverseString := ""
 
-	sliceLen := len(sliceOfString)
+	sliceLen := len(s)
 	lastKnowIndex := sliceLen - 1
 
 	// reverse loop slice and concatenate characters to make reverse string
 	for i := sliceLen; i != 0; i-- {
 		// give me the string last know position
-		myString = myString + sliceOfString[lastKnowIndex]
+		reverseString = reverseString + s[lastKnowIndex]
 		lastKnowIndex--
 	}
 
-	return myString, nil
+	return reverseString, nil
+}
+
+// reverseUsingTwoPointers taking in a string and reverses the order of the string and returns it
+// O(n/2) - "n/2" this is due to having two pointers which divides and conquer the string in half
+func reverseUsingTwoPointers(myString string) (string, error) {
+	// validate empty string(s)
+	if len(strings.ReplaceAll(myString, " ", "")) < 2 {
+		return "", errors.New("string is empty")
+	}
+
+	s := strings.Split(myString, "")
+	myReverseStringSlice := make([]string, len(s))
+
+	leftPointer := 0
+	rightPointer := len(s) - 1
+
+	for i := 0; i < len(s); i++ {
+
+		// need to find a break point
+		if rightPointer < leftPointer {
+			break
+		}
+
+		myReverseStringSlice[leftPointer] = s[rightPointer]
+		myReverseStringSlice[rightPointer] = s[leftPointer]
+
+		// adjust pointer
+		leftPointer++
+		rightPointer--
+	}
+
+	return strings.Join(myReverseStringSlice, ""), nil
 }
