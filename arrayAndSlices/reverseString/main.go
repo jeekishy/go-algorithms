@@ -16,7 +16,7 @@ func main() {
 	}
 	fmt.Println(newString1)
 
-	// using tow pointer method - 0(n/2)
+	// using two pointer method - 0(n/2)
 	newString2, err := reverseUsingTwoPointers(myString)
 	if err != nil {
 		fmt.Printf("%s", err.Error())
